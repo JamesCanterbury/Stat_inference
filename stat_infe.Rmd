@@ -1,22 +1,14 @@
 ---
-title: "Stat_Inference"
+title: "Statistical Inference"
 author: "JC"
 date: "September 7, 2017"
-output: html_document
+
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-The exponential distribution can be simulated in R with rexp(n, lambda) where lambda is the rate parameter. 
-The mean of exponential distribution is 1/lambda and the standard deviation is also 1/lambda. 
-Set lambda = 0.2 for all of the simulations. You will investigate the distribution of averages of 40 exponentials. 
-Note that you will need to do a thousand simulations.
-
-Show the sample mean and compare it to the theoretical mean of the distribution.
-Show how variable the sample is (via variance) and compare it to the theoretical variance of the distribution.
-Show that the distribution is approximately normal.
 
 ```{r}
 
@@ -45,8 +37,8 @@ means_exponentials <- apply(simulated_exponentials, 2, mean)
 
 ``` {r}
 # distribution mean
-analytical_mean <- mean(means_exponentials)
-analytical_mean
+simulation_mean <- mean(means_exponentials)
+simulation_mean
 ```
 
 ```{r}
@@ -60,12 +52,12 @@ theory_mean
 ```{r}
 # visualization
 hist(means_exponentials, xlab = "mean", main = "Exponential Function Simulations")
-abline(v = analytical_mean, col = "red")
+abline(v = simulation_mean, col = "red")
 abline(v = theory_mean, col = "orange")
 ```
 
 ###Answer 1
-The analytics mean is 4.993867 the theoretical mean 5. The center of distribution of averages of 40 exponentials is very close to the theoretical center of the distribution.
+The simulated mean is 5.02 , and  the theoretical mean 5. The center of distribution of averages of 40 exponentials is very close to the theoretical center of the distribution.
 
 ##Question 2
 
@@ -96,7 +88,7 @@ variance_theory
 ```
 
 ###Answer 2
-Standard Deviation of the distribution is 0.7931608 with the theoretical SD calculated as 0.7905694. The Theoretical variance is calculated as (1?????1n???)2(1?????1n)2 = 0.625. The actual variance of the distribution is 0.6291041
+Standard Deviation of the distribution is 0.799 with the theoretical SD calculated as 0.791. The Theoretical variance is calculated as ( ( 1/Lambda ) * ( ( n )^.5) ) ^ 2 = 0.625. The actual variance of the distribution is 0.638
 
 ##Question 3
 Show that the distribution is approximately normal.
